@@ -361,7 +361,7 @@ void TFMPI2C::recoverI2CBus( uint8_t dataPin, uint8_t clockPin)
     pinMode( dataPin, INPUT);
     pinMode( clockPin, INPUT);
     //  restore Wire library
-    Wire.begin();
+    Wire.begin(33,32);
 }
 //
 //  Recover I2C bus using default pin numbers
@@ -369,7 +369,7 @@ void TFMPI2C::recoverI2CBus( uint8_t dataPin, uint8_t clockPin)
 void TFMPI2C::recoverI2CBus()
 {
     Serial.println( "Recover default I2C bus.");
-    recoverI2CBus( PIN_WIRE_SDA, PIN_WIRE_SCL);
+    recoverI2CBus( 33, 32);
 
     // If the Arduino has a second I2C interface...
     #if WIRE_INTERFACES_COUNT > 1
